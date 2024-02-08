@@ -1,0 +1,85 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql> create database ISGI;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use ISGI;
+Database changed
+mysql> create table stagiaire(
+    -> id INT,
+    -> nom varchar(15))
+    -> engine = InnoDB;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc stagiaire;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | YES  |     | NULL    |       |
+| nom   | varchar(15) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> alter table stagiaire
+    -> add cod int(10) after id;
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> desc stagiaire;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | YES  |     | NULL    |       |
+| cod   | int         | YES  |     | NULL    |       |
+| nom   | varchar(15) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table stagiaire
+    -> modify column cod varchar(20);
+Query OK, 0 rows affected (0.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc stagiaire;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | YES  |     | NULL    |       |
+| cod   | varchar(20) | YES  |     | NULL    |       |
+| nom   | varchar(15) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table stagiaire
+    -> modify column cod not null;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'not null' at line 2
+mysql> insert into stagiaire()
+    -> values(1,"codstagiaire1","anas");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into stagiaire()
+    -> values(2,"codstagiaire2","imad");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into stagiaire()
+    -> values(3,"codstagiaire2","yassin");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from stagiaire;
++------+---------------+--------+
+| id   | cod           | nom    |
++------+---------------+--------+
+|    1 | codstagiaire1 | anas   |
+|    2 | codstagiaire2 | imad   |
+|    3 | codstagiaire2 | yassin |
++------+---------------+--------+
+3 rows in set (0.00 sec)

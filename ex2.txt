@@ -1,0 +1,113 @@
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 91
+Server version: 8.0.36 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database  Centre_formation;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show datadases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'datadases' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| centre_formation   |
+| information_schema |
+| isgi               |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use database centre_formation ;
+ERROR 1049 (42000): Unknown database 'database'
+mysql> use centre_formation ;
+Database changed
+mysql> create table ETUDIANT(
+    -> num_CINEtu varchar(10)
+    -> nomE_tu varchar(45)
+    -> prenomEtu varchar(45)
+    -> dateNaissance date
+    -> adressEtu varchar(45)
+    -> villeEtu varchar(45)
+    -> niveauEtu varchar(45))
+    -> ENGINE = InnoDB;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'nomE_tu varchar(45)
+prenomEtu varchar(45)
+dateNaissance date
+adressEtu varchar(4' at line 3
+mysql> create table ETUDIANT(
+    -> num_CINEtu varchar(10),
+    -> nomE_tu varchar(45),
+    -> prenomEtu varchar(45),
+    -> dateNaissance date
+    -> ,
+    -> adressEtu varchar(45),
+    -> villeEtu varchar(45),
+    -> niveauEtu varchar(45)),
+    -> ENGINE = InnoDB;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+ENGINE = InnoDB' at line 9
+mysql> create table ETUDIANT(
+    -> num_CINEtu varchar(10),
+    -> nomE_tu varchar(45),
+    -> prenomEtu varchar(45),
+    -> dateNaissance date,
+    -> adressEtu varchar(45),
+    -> villeEtu varchar(45),
+    -> niveauEtu varchar(45))
+    -> ENGINE = InnoDB;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table Inscription(
+    -> codeSess int,
+    -> num_CINEtu varchar(10),
+    -> typeCours varchar(45))
+    -> ENGINE = InnoDB;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table SESSION(
+    -> codeSess int,
+    -> nomSess varchar(45),
+    -> dataDebut date,
+    -> dateFin varchar(45))
+    -> ENGINE = InnoDB;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table Formation(
+    -> codeForm int,
+    -> titreForm varchar(45),
+    -> dureeForm double,
+    -> prixFrom double,
+    -> SESSION_CODEsESS INT)
+    -> ENGINE = InnoDB;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> create table Catalogue(
+    -> codeSpec int,
+    -> codeForm int)
+    -> ENGINE = InnoDB;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table SPECIALITE(
+    -> codeSpec int,
+    -> nomSpec varchar(45),
+    -> descSpec varchar(45))
+    -> ENGINE = InnoDB;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc centre_formation;
+ERROR 1146 (42S02): Table 'centre_formation.centre_formation' doesn't exist
+mysql> show database centre_formation;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database centre_formation' at line 1
+mysql> select
